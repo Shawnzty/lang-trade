@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Run Manifest",
+  "type": "object",
+  "required": [
+    "run_id",
+    "created_at",
+    "workspace_root",
+    "runs_root",
+    "source",
+    "stage_order",
+    "app",
+    "version"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "workspace_root": {
+      "type": "string"
+    },
+    "runs_root": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "youtube_url",
+        "local_video",
+        "skip_download"
+      ],
+      "properties": {
+        "youtube_url": {
+          "type": "string"
+        },
+        "local_video": {
+          "type": "string"
+        },
+        "skip_download": {
+          "type": "boolean"
+        }
+      }
+    },
+    "stage_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "app": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+workspace_root: workspace
+runs_root: workspace/runs
+
+source:
+  youtube_url: ""
+  local_video: ""
+  skip_download: false
+  title: ""
+
+yt_dlp:
+  format: "bv*+ba/b"
+  merge_output_format: mp4
+  output_template: "%(title).120s-%(id)s.%(ext)s"
+  cookies_from_browser: ""
+  write_info_json: true
+
+ffmpeg:
+  ffmpeg_path: ffmpeg
+  ffprobe_path: ffprobe
+  audio_sample_rate: 16000
+  preview_audio_bitrate: 64k
+  thumbnail_interval_seconds: 45
+  video_fps: 30
+  preview_scale: "1280:-2"
+
+transcription:
+  provider: whisper_cli
+  language: en
+  whisper_model: turbo
+  command_template: ""
+  extra_args: []
+
+structure:
+  target_slides_per_minute: 1.4
+  max_slides: 16
+  glossary_size: 12
+
+notebooklm:
+  provider: notebooklm_mcp_cli
+  cli_path: nlm
+  profile: "${NOTEBOOKLM_PROFILE}"
+  auth_strategy: profile
+  reuse_notebook_id: ""
+  retries: 3
+  query_timeout_seconds: 180
+
+tts:
+  provider: command
+  command_template: "${VOICE_CLONE_COMMAND}"
+  voice_id: "${VOICE_CLONE_VOICE_ID}"
+  reference_audio_path: "${VOICE_REFERENCE_AUDIO}"
+  sample_rate: 24000
+  words_per_minute: 145
+
+slide_renderer:
+  provider: python_pptx
+  width: 1920
+  height: 1080
+  background_start: "#1f3b4d"
+  background_end: "#3a6b7c"
+  title_color: "#f7f4ea"
+  body_color: "#fff9ef"
+  accent_color: "#f2a65a"
+  font_name: Aptos
+
+video_renderer:
+  provider: ffmpeg
+  video_codec: libx264
+  audio_codec: aac
+  crf: 20
+  preview_crf: 28
+
+export:
+  folder_name: deliverables
