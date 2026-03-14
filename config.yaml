@@ -48,9 +48,37 @@ tts:
   provider: command
   command_template: "${VOICE_CLONE_COMMAND}"
   voice_id: "${VOICE_CLONE_VOICE_ID}"
+  clone_voice_name: "${VOICE_CLONE_NAME}"
   reference_audio_path: "${VOICE_REFERENCE_AUDIO}"
   sample_rate: 24000
   words_per_minute: 145
+  fish_audio:
+    api_key: "${FISH_AUDIO_API_KEY}"
+    model: s1
+    visibility: private
+    train_mode: fast
+    enhance_audio_quality: true
+    latency: normal
+    normalize: true
+    reference_text: ""
+    timeout_seconds: 120
+    clone_poll_attempts: 1
+    clone_poll_interval_seconds: 2.0
+  elevenlabs:
+    api_key: "${ELEVENLABS_API_KEY}"
+    model_id: eleven_multilingual_v2
+    output_format: pcm_24000
+    remove_background_noise: false
+    description: ""
+    labels: {}
+    language_code: ""
+    voice_settings:
+      stability: 0.35
+      similarity_boost: 0.75
+      style: 0.0
+      use_speaker_boost: true
+    enable_logging: true
+    timeout_seconds: 120
 
 slide_renderer:
   provider: python_pptx

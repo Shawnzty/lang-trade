@@ -10,13 +10,13 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from yt2slides.config import DEFAULT_CONFIG, deep_merge
-from yt2slides.notebooklm import NotebookLMAdapterError, NotebookLMGenerationResult
-from yt2slides.pipeline.base import ArtifactRecord, BaseStage, StageContext, StageDefinition, StageResult
-from yt2slides.pipeline.orchestrator import PipelineOrchestrator
-from yt2slides.pipeline.workspace import RunWorkspace
-from yt2slides.stages import build_default_stages
-import yt2slides.stages.pipeline_stages as stage_module
+from config import DEFAULT_CONFIG, deep_merge
+from notebooklm import NotebookLMAdapterError, NotebookLMGenerationResult
+from pipeline.base import ArtifactRecord, BaseStage, StageContext, StageDefinition, StageResult
+from pipeline.orchestrator import PipelineOrchestrator
+from pipeline.workspace import RunWorkspace
+from stages import build_default_stages
+import stages.pipeline_stages as stage_module
 
 
 def make_config(tmp_path: Path) -> dict[str, Any]:

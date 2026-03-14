@@ -39,7 +39,7 @@ README.md
 ## Source Tree
 
 ```text
-src/yt2slides/
+src/
   cli.py
   config.py
   exceptions.py
